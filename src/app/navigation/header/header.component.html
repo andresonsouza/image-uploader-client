@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span>Sistema de Cadastro</span>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="nav-spacer usuarioToolbar">
+      <img [src]="imgURL ? imgURL : 'https://www.w3schools.com/howto/img_avatar.png'">
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+    </mat-menu>
+
+  </div>
+</mat-toolbar>

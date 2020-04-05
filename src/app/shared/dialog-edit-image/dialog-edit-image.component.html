@@ -1,0 +1,25 @@
+<!-- <div fxLayout="row" class="form-gravatar" fxLayoutAlign="space-around" fxLayoutGap.gt-md="20px" fxLayout.md="column"
+      fxLayout.sm="column" fxLayout.xs="column">
+      <input type="file" #fileInput style="display: none;" accept="image/*" (change)="onArquivoSelecionado($event)" />
+      <button mat-button type="button" class="button-gravatar" (click)="fileInput.click()">
+        <img class="perfil-avatar" [src]="imgURL ? imgURL : 'http://localhost:8080/check/upload'"
+          [alt]="formulario.value.name">
+      </button>
+    </div> -->
+
+<h3>Atualizar imagem de perfil</h3>
+
+<div>
+  <input type="file" (change)="onFileChanged($event)">
+  <img [src]="imgURL" height="200" *ngIf="imgURL">
+</div>
+
+<input type="button" (click)="onUpload()" value="enviar">
+
+<mat-divider></mat-divider>
+
+Received Image:
+<span>
+  {{ receivedImageData['pic'] | json}}
+</span>
+<img [src]="convertedImage">
