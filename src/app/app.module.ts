@@ -14,6 +14,7 @@ import { MaterialModule } from './material.module';
 import { DialogConfirmationComponent } from './shared/dialog-confirmation/dialog-confirmation.component';
 import { DialogEditImageComponent } from './shared/dialog-edit-image/dialog-edit-image.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileService } from './shared/services/profile.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignupComponent,
     HeaderComponent,
     DialogConfirmationComponent,
-    DialogEditImageComponent
+    DialogEditImageComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

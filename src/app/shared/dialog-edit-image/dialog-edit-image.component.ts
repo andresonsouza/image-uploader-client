@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-dialog-edit-image',
@@ -8,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DialogEditImageComponent {
 
-  constructor(private httpClient: HttpClient) { }
-
+  constructor(private http: HttpClient,
+              private profileService: ProfileService) { }
 
   public selectedFile;
   public event1;
@@ -17,6 +18,7 @@ export class DialogEditImageComponent {
   receivedImageData: any;
   base64Data: any;
   convertedImage: any;
+  pic: any;
 
   public onFileChanged(event) {
     console.log(event);
@@ -28,16 +30,14 @@ export class DialogEditImageComponent {
     reader.onload = (event2) => {
       this.imgURL = reader.result;
     };
-
   }
 
-  // This part is for uploading
   onUpload() {
 
     const uploadData = new FormData();
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 
-    this.httpClient.post('http://localhost:8080/check/upload', uploadData)
+    this.http.post('http://localhost:8080/api/profile', uploadData)
       .subscribe(
         res => {
           console.log(res);
@@ -49,5 +49,23 @@ export class DialogEditImageComponent {
       );
 
   }
+
+  // onUpload() {
+
+  //   const uploadData = new FormData();
+  //   uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+
+  //   this.httpClient.post('http://localhost:8080/api/profile', uploadData)
+  //     .subscribe(
+  //       res => {
+  //         console.log(res);
+  //         this.receivedImageData = res;
+  //         this.base64Data = this.receivedImageData.pic;
+  //         this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data;
+  //       },
+  //       err => console.log('Error Occured duringng saving: ' + err)
+  //     );
+
+  // }
 
 }
